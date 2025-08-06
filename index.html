@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FBoxz List of the Best TV and Movie Streaming Sites</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --bg-color-light: #f8faff;
+      --bg-color-dark: #0b0c10;
+      --text-color-light: #111;
+      --text-color-dark: #f8f8f2;
+      --accent-color: #00ffd5;
+      --feature-color: #ff4c60;
+      --button-light-bg: #5c6a6e;
+      --button-light-hover: #4c5658;
+      --card-light: linear-gradient(145deg, #e0e8f0, #cfd8e8);
+      --card-dark: linear-gradient(145deg, #1a1a2e, #16213e);
+      --header-light: linear-gradient(135deg, #e0eafc, #cfdef3);
+      --header-dark: linear-gradient(135deg, #141e30, #243b55);
+      --border-radius: 14px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: var(--bg-color-light);
+      color: var(--text-color-light);
+    }
+    body.dark-mode {
+      background: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--header-dark);
+      color: white;
+    }
+    body.light-mode header {
+      background: var(--header-light);
+      color: black;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    nav a,
+    .bookmark-btn,
+    .mode-toggle {
+      text-decoration: none;
+      background: var(--accent-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s;
+    }
+    nav a:hover,
+    .bookmark-btn:hover,
+    .mode-toggle:hover {
+      background: #00c9aa;
+    }
+
+    .filter-section {
+      margin: 1rem 2rem;
+    }
+    .filters-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-color);
+      color: black;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s;
+    }
+    .filters-toggle:hover {
+      background: #00c9aa;
+      transform: translateY(-1px);
+    }
+    .filters-toggle:focus {
+      outline: 2px dashed var(--accent-color);
+      outline-offset: 4px;
+    }
+    body.light-mode .filters-toggle {
+      background: var(--button-light-bg);
+      color: white;
+    }
+    body.light-mode .filters-toggle:hover {
+      background: var(--button-light-hover);
+      transform: translateY(-1px);
+    }
+    .filters-content.hidden {
+      display: none;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--card-dark);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    body.light-mode .filters {
+      background: var(--card-light);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      flex: 1;
+    }
+    .filter-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    body.light-mode .filter-label {
+      color: var(--text-color-light);
+    }
+
+    .filter-control {
+      position: relative;
+    }
+    .filter-select {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      border: 2px solid var(--accent-color);
+      border-radius: var(--border-radius);
+      appearance: none;
+      background: transparent;
+      color: black;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    body.dark-mode .filter-select {
+      color: #e2e2e2;
+    }
+    .filter-select:hover,
+    .filter-select:focus {
+      border-color: var(--feature-color);
+      outline: none;
+    }
+    .filter-control::after {
+      content: "\f0d7";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--accent-color);
+    }
+
+    .filter-checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+    .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .custom-checkbox input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .custom-checkbox span::before {
+      content: "";
+      position: absolute;
+      left: -1.5rem;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid var(--accent-color);
+      border-radius: 4px;
+      background: transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .custom-checkbox input:checked + span::before {
+      background: var(--feature-color);
+      border-color: var(--feature-color);
+    }
+
+    /* Grid: max 4 columns */
+    .site-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding: 2.5rem;
+    }
+    /* Responsive fallback */
+    @media (max-width: 1200px) {
+      .site-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 900px) {
+      .site-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .site-list {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    .site-card {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1.75rem;
+      border-radius: var(--border-radius);
+      background: var(--card-dark);
+      box-shadow: 0 0 12px rgba(0,255,213,0.3);
+      transition: transform 0.2s;
+    }
+    body.light-mode .site-card {
+      background: var(--card-light);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .site-card:hover {
+      transform: scale(1.02);
+    }
+
+    /* Popular badge styling */
+    .badge-popular {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: gold;
+      color: black;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .site-card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--accent-color);
+    }
+    body.light-mode .site-card h3 {
+      color: #333;
+    }
+    .site-description {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .features {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .feature-icon {
+      background: var(--feature-color);
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: white;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--border-radius);
+      background: var(--accent-color);
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.1s, box-shadow 0.2s;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    body.light-mode .cta-button {
+      background: var(--button-light-bg);
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    body.light-mode .cta-button:hover {
+      background: var(--button-light-hover);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--header-dark);
+      color: white;
+    }
+    body.light-mode footer {
+      background: var(--header-light);
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FBoxz Streaming Sites</h1>
+    <nav>
+      <a href="https://www.reddit.com/r/fboxzto/" target="_blank">Reddit</a>
+      <button class="mode-toggle" onclick="toggleMode()" aria-label="Toggle mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section class="filter-section">
+    <button
+      class="filters-toggle"
+      aria-expanded="false"
+      aria-controls="filters-container"
+      onclick="toggleFilters()"
+    >
+      <i class="fas fa-chevron-right"></i>
+      Filter Sites
+    </button>
+    <div id="filters-container" class="filters-content hidden" role="region" aria-label="Filter Sites">
+      <div class="filters">
+        <div class="filter-group">
+          <label for="typeFilter" class="filter-label">
+            <i class="fas fa-list-ul"></i>
+            Type
+          </label>
+          <div class="filter-control">
+            <select id="typeFilter" class="filter-select" onchange="displaySites()">
+              <option value="all">All</option>
+              <option value="movies">Movies</option>
+              <option value="tv shows">TV Shows</option>
+              <option value="anime">Anime</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <fieldset class="filter-checkbox-group">
+            <legend class="filter-label">
+              <i class="fas fa-sliders-h"></i>
+              Features
+            </legend>
+            <label class="custom-checkbox">
+              <input type="checkbox" value="autonext" onchange="displaySites()"/>
+              <span>Autonext</span>
+            </label>
+            <label class="custom-checkbox">
+              <input type="checkbox" value="bookmarks" onchange="displaySites()"/>
+              <span>Bookmarks</span>
+            </label>
+            <label class="custom-checkbox">
+              <input type="checkbox" value="continue watching" onchange="displaySites()"/>
+              <span>Continue Watching</span>
+            </label>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="site-list" id="siteList" aria-live="polite"></main>
+
+  <footer>
+    &copy; 2025 FBoxz. All rights reserved.
+  </footer>
+
+  <script>
+    const featureIcons = {
+      autonext: '<i class="fas fa-forward"></i>',
+      bookmarks: '<i class="fas fa-bookmark"></i>',
+      'continue watching': '<i class="fas fa-play-circle"></i>',
+    };
+
+    const sites = [
+      {
+        name: 'MovieDB Wiki',
+        url: 'https://www.moviedb.wiki',
+        type: ['movies'],
+        features: ['bookmarks'],
+        description: 'A clean and fast site for browsing movies with bookmarking capabilities.',
+        popular: true,
+      },
+      {
+        name: 'WatchTV Click',
+        url: 'https://www.watchtv.click',
+        type: ['movies','tv shows','anime'],
+        features: ['autonext','continue watching'],
+        description: 'Stream the latest TV shows and movies with support for autonext and continue watching.',
+      },
+      {
+        name: 'Hydraflix',
+        url: 'https://www.hydraflix.vip',
+        type: ['movies','tv shows','anime'],
+        features: ['autonext','bookmarks'],
+        description: 'A high-quality streaming site offering multiple features across genres.',
+        popular: true,
+      },
+      {
+        name: 'Tubi TV',
+        url: 'https://www.tubi.tv',
+        type: ['movies'],
+        features: ['bookmarks'],
+        description: 'Free streaming with bookmarks support. Watch a wide selection of movies.',
+      },
+      {
+        name: 'Flixtor',
+        url: 'https://flixtor.to',
+        type: ['movies','tv shows'],
+        features: ['autonext'],
+        description: 'Flixtor offers fast streaming of movies and TV shows with seamless autonext.',
+      },
+      {
+        name: 'HiAnime',
+        url: 'https://hianime.to/home',
+        type: ['anime'],
+        features: ['autonext','bookmarks'],
+        description: 'HiAnime brings you the latest anime with autonext playback and bookmark support.',
+      },
+      {
+        name: 'AniCrush',
+        url: 'https://anicrush.to/home',
+        type: ['anime'],
+        features: ['autonext','bookmarks'],
+        description: 'AniCrush streams popular anime titles featuring autonext and bookmarks.',
+      }
+    ];
+
+    function getSelectedFeatures() {
+      return Array.from(document.querySelectorAll('.filter-checkbox-group input:checked'))
+        .map(cb => cb.value);
+    }
+
+    function displaySites() {
+      const container = document.getElementById('siteList');
+      container.innerHTML = '';
+      const type = document.getElementById('typeFilter').value;
+      const selectedFeatures = getSelectedFeatures();
+
+      sites
+        .filter(site => {
+          const matchesType = type === 'all' || site.type.includes(type);
+          const matchesFeat =
+            selectedFeatures.length === 0 ||
+            selectedFeatures.every(f => site.features.includes(f));
+          return matchesType && matchesFeat;
+        })
+        .forEach(site => {
+          const card = document.createElement('div');
+          card.className = 'site-card';
+          card.innerHTML = `
+            ${site.popular ? '<div class="badge-popular">POPULAR</div>' : ''}
+            <h3>${site.name}</h3>
+            <p class="site-description">${site.description}</p>
+            <div class="features">
+              ${site.features
+                .map(f => `<span class="feature-icon" title="${f}">${featureIcons[f]}</span>`)
+                .join('')}
+            </div>
+            <a href="${site.url}" class="cta-button" target="_blank" rel="noopener">Visit Site</a>
+          `;
+          container.appendChild(card);
+        });
+    }
+
+    function toggleMode() {
+      const dark = document.body.classList.contains('dark-mode');
+      document.body.classList.toggle('dark-mode', !dark);
+      document.body.classList.toggle('light-mode', dark);
+      document.querySelector('.mode-toggle i').className = dark
+        ? 'fas fa-moon'
+        : 'fas fa-sun';
+      localStorage.setItem('fboxz_theme', dark ? 'light' : 'dark');
+    }
+
+    function loadTheme() {
+      const theme = localStorage.getItem('fboxz_theme') || 'dark';
+      document.body.classList.add(`${theme}-mode`);
+      document.querySelector('.mode-toggle i').className =
+        theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    function bookmarkPage() {
+      alert('Press Ctrl+D (Windows) or Cmd+D (Mac) to bookmark.');
+    }
+
+    function toggleFilters() {
+      const btn = document.querySelector('.filters-toggle');
+      const cont = document.getElementById('filters-container');
+      const exp = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!exp));
+      cont.classList.toggle('hidden', exp);
+      btn.querySelector('i').className = exp
+        ? 'fas fa-chevron-right'
+        : 'fas fa-chevron-down';
+    }
+
+    // initialize
+    loadTheme();
+    displaySites();
+  </script>
+</body>
+</html>
